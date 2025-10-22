@@ -10,6 +10,6 @@ public class testing_script : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 }
