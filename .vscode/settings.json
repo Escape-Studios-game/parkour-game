@@ -67,5 +67,6 @@
         "*.sln": "*.csproj"
     },
     "dotnet.defaultSolution": "parkour-game.slnx",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "FSharp.suggestGitignore": false
 }
