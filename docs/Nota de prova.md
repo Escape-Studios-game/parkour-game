@@ -1,0 +1,1 @@
+[[Aquest és un enllaç]]
