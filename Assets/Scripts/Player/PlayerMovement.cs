@@ -1,17 +1,12 @@
 using UnityEngine;
 
-public class PlayerMovement : Player
+public class PlayerMovement : MonoBehaviour
 {
-    private PlayerInput _playerInput;
-    private Rigidbody _rigidBody;
-    private bool _isGrounded;
-    private Vector2 _moveInput;
+    private const float _MAX_SPEED = 100.00f;
+    private const float _MAX_MOMENTUM = 100.00f;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _momentum;
 
-    private void Awake() => _playerInput = new PlayerInput();
-    private void OnEnable() => _playerInput.Gameplay.Enable();
-    private void OnDisable() => _playerInput.Gameplay.Disable();
-    private void Update()
-    {
-        _moveInput = _playerInput.Gameplay.Move.ReadValue<Vector2>();
-    }
+    private bool _isGrounded;
+    private Rigidbody rb;
 }
