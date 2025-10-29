@@ -1,4 +1,9 @@
-public class Player
+using UnityEngine;
+
+public class Player : MonoBehaviour
 {
-    private double _speed { get { return _speed; } set { _speed = value; } }
+    private const double _MAX_SPEED = 200;
+    private double Speed { get => Speed; set => Speed = value; }
+    private double Momentum { get => Momentum; set => Momentum = Momentum; }
+    private double JumpHeigth { get => JumpHeigth; set => JumpHeigth = JumpHeigth; }
 }
