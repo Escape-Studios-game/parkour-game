@@ -1,4 +1,3 @@
 ﻿<Solution>
   <Project Path="Player.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
 </Solution>

@@ -10,17 +10,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _momentum;
 
-    private float _horizontalInput;
-    private float _verticalInput;
-    private Vector3 _moveDirection;
-
+    [SerializeField] private PlayerInput _playerInput;
     private bool _isGrounded;
-    private Rigidbody rb;
+    private Rigidbody _rb;
     [SerializeField] private float _mass;
 
+    private void Awake()
+    {
+        _playerInput = new PlayerInput();
+    }
 
     private void Start()
     {
+        _rb = GetComponent<Rigidbody>();
     }
-
 }
