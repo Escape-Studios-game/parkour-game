@@ -10,14 +10,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _momentum;
 
-    [SerializeField] private PlayerInput _playerInput;
     private bool _isGrounded;
     private Rigidbody _rb;
     [SerializeField] private float _mass;
 
     private void Awake()
     {
-        _playerInput = new PlayerInput();
+
+
     }
 
     private void Start()
