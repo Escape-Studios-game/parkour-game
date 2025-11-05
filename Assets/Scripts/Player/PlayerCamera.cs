@@ -4,7 +4,6 @@ using UnityEngine.PlayerLoop;
 
 public class PlayerCamera : MonoBehaviour
 {
-
     [SerializeField] private float _sensitivityX;
     [SerializeField] private float _sensitivityY;
     private float _xRotation;
@@ -19,7 +18,9 @@ public class PlayerCamera : MonoBehaviour
     public void ChangeCursorVisibility(bool toSet) => Cursor.visible = toSet;
     public void ChangeCursorState(CursorLockMode toSet) => Cursor.lockState = toSet;
 
-    private void Update()
+    private void Update() => MoveCamera();
+
+    private void MoveCamera()
     {
         float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * _sensitivityX;
         float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * _sensitivityY;

@@ -1,15 +1,24 @@
 {
     "version": 1,
-    "name": "PlayerInput",
+    "name": "PlayerController",
     "maps": [
         {
-            "name": "Gameplay",
-            "id": "259e5427-c91e-4810-af4b-40603dca77fb",
+            "name": "Movement",
+            "id": "c2f8bbf5-0d72-4825-aae7-19018ab846cb",
             "actions": [
                 {
                     "name": "Move",
                     "type": "PassThrough",
-                    "id": "4b465a46-99f3-48da-8df0-3db03ecabf7e",
+                    "id": "3b194b23-af91-4487-bbaa-7e3c42077024",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "aaa02505-a3f7-41e3-aee4-455530964fd2",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -18,19 +27,8 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "753b559b-80ab-4f40-b700-ac96b9b3c23c",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "2D Vector",
-                    "id": "90eedf70-d2cc-404c-b6ca-2e7c9f0cbaa6",
+                    "id": "47756f96-a24a-4cd2-ac32-0b265c366e31",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -41,7 +39,7 @@
                 },
                 {
                     "name": "up",
-                    "id": "20fdd3db-10f9-44a9-b61d-778b799a42ca",
+                    "id": "bfb6aa8d-1080-492b-a4f3-e35412c1efcf",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
@@ -52,7 +50,7 @@
                 },
                 {
                     "name": "down",
-                    "id": "28348184-d850-45f2-9f08-16e6cb5dce57",
+                    "id": "bad57bc1-09ce-4dc4-bf78-999c66eee132",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
@@ -63,7 +61,7 @@
                 },
                 {
                     "name": "left",
-                    "id": "f4c543b3-c7b7-4f8c-bd7b-cd0ff3d5e54b",
+                    "id": "99af01ba-aaef-4404-8ff6-8d3cde1a44b1",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -74,7 +72,7 @@
                 },
                 {
                     "name": "right",
-                    "id": "ca58b0dc-6e6d-4a0e-8a28-b2cbc041147f",
+                    "id": "6300e1fc-7c5e-4299-b7cd-e808061c94f7",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -82,6 +80,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "8ccdd3d9-428b-4999-9b18-e133ef02d8a6",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
