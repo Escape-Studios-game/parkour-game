@@ -1,27 +1,40 @@
-using UnityEditor.Experimental.GraphView;
+using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    private const float _MAX_SPEED = 100.00f;
-    private const float _MAX_MOMENTUM = 100.00f;
-    private const float _MAX_UNCAPED_MOMENTUM = 150.00f;
-    [SerializeField] private float _speed;
-    [SerializeField] private float _momentum;
+    // TODO Make the player speed scalable
+    [SerializeField] private float _playerSpeed = 5.0f;
+    [SerializeField] private float _jumpHeight = 1.5f;
+    [SerializeField] private float _gravityValue = -10.0f;
 
+    private CharacterController _controller;
     private bool _isGrounded;
-    private Rigidbody _rb;
-    [SerializeField] private float _mass;
 
-    private void Awake()
+    private InputManager _inputManager;
+    private void Awake() => _controller = GetComponent<CharacterController>();
+
+    private void Start() => _inputManager = InputManager.Instance;
+
+    private void FixedUpdate() => Move();
+
+    private void Update()
     {
-
+        _isGrounded = _controller.isGrounded;
+        if (_inputManager.JumpedThisFrame())
+        { Jump(); }
 
     }
 
-    private void Start()
+    private void Jump()
     {
-        _rb = GetComponent<Rigidbody>();
+
+        Debug.Log("Hola");
+    }
+
+    private void Move()
+    {
+        // TODO Implement movement related with camera
     }
 }

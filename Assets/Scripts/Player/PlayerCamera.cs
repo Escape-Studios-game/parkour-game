@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.PlayerLoop;
-
+// TODO Refactor this, because we are not using the old unity's input system
 public class PlayerCamera : MonoBehaviour
 {
     [SerializeField] private float _sensitivityX;

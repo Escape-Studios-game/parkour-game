@@ -1,8 +1,8 @@
 {
-    "name": "Player",
+    "name": "Input",
     "rootNamespace": "",
     "references": [
-        "GUID:00e292864af9a454db660dfcf6acf825"
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
