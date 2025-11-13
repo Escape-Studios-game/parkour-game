@@ -13,14 +13,18 @@ public class PlayerMovement : MonoBehaviour
     private float _currentSpeed = 0f;
 
     [SerializeField, Tooltip("The amount to multiply the speed every frame, to get a smooth speed movement")]
-    private float _speedMultiplier = 6f;
+    private float _speedMultiplier;
     [SerializeField, Tooltip("The amount of speed the player will loose when stopping in place")]
-    private float _speedDecreaser = 16f;
+    private float _speedDecreaser;
     [SerializeField, Tooltip("The amount of speed the player will have when starts moving")]
-    private float _initialSpeed = 2f;
+    private float _initialSpeed;
 
     private InputManager _inputManager;
     private Rigidbody _rigidbody;
+
+    [SerializeField, Tooltip("Add here the orientation object from the player")]
+    private Transform _orientation;
+
     private bool _isGrounded;
 
     private void Awake() => _rigidbody = GetComponent<Rigidbody>();
@@ -34,10 +38,15 @@ public class PlayerMovement : MonoBehaviour
         Move();
         ApplyGravity();
 
-        // Debug.Log("Is on ground: " + _isGrounded);
         if (_inputManager.JumpedThisFrame() && _isGrounded)
         { Jump(); }
     }
+
+    /// <summary>
+    /// Gets the player's current movement speed.
+    /// </summary>
+    /// <returns>The player's current speed in units per second.</returns>
+    public float GetCurrentSpeed() => _currentSpeed;
 
     private void CheckGrounded()
     {
@@ -62,14 +71,21 @@ public class PlayerMovement : MonoBehaviour
     {
         // TODO Implement movement related with camera and make it move smoothly, make it still moving even when stopped until speed reaches 0
         // Get the player inputs into a vector
-        Vector2 axis = new(_inputManager.GetPlayerMovement().y, _inputManager.GetPlayerMovement().x);
+        var axis = _inputManager.GetPlayerMovement();
 
-        // Detect where is forward detecting where is the camera looking
-        Vector3 forwardDirection = new(-Camera.main.transform.right.z, 0.0f, Camera.main.transform.right.x);
+        var moveDirection = _orientation.forward * axis.x + _orientation.right * axis.y;
 
-        // Make the player move
-        var moveDirection = (forwardDirection * axis.x) + (Camera.main.transform.right * axis.y) + (Vector3.up * _rigidbody.linearVelocity.y);
-        _rigidbody.linearVelocity = moveDirection;
+        // Get what direction is the camera looking at, and normalize it so it doesn't tilt
+        var forwardDirection = Camera.main.transform.forward;
+    }
+
+    private void IncreaseSpeed()
+    {
+
+    }
+
+    private void DecreaseSpeed()
+    {
 
     }
 }

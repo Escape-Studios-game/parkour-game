@@ -1,16 +1,22 @@
+using System.Linq;
 using UnityEngine;
-using System.Collections;
-using UnityEngine.PlayerLoop;
-// TODO Refactor this, because we are not using the old unity's input system
 public class PlayerCamera : MonoBehaviour
 {
-    [SerializeField] private float _sensitivityX;
-    [SerializeField] private float _sensitivityY;
-    private float _xRotation;
-    private float _yRotation;
+    private InputManager _inputManager;
+
+    [SerializeField, Tooltip("The speed the camera will move")]
+    private float _sensitivity;
+    private float _xRotation, _yRotation;
+
+    private Vector2 _axis;
+
+    [SerializeField, Tooltip("Add here the orientation object")]
+    private Transform _orientation;
 
     private void Start()
     {
+        _inputManager = InputManager.Instance;
+        tag = "MainCamera";
         ChangeCursorState(CursorLockMode.Locked);
         ChangeCursorVisibility(false);
     }
@@ -20,15 +26,21 @@ public class PlayerCamera : MonoBehaviour
 
     private void Update() => MoveCamera();
 
+    public float GetSensivity() => _sensitivity;
+    public void SetSensivity(float toSet) => _sensitivity = toSet;
+
     private void MoveCamera()
     {
-        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * _sensitivityX;
-        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * _sensitivityY;
+        _axis = _inputManager.GetMouseDelta();
+
+        float mouseX = _axis.x * _sensitivity * Time.deltaTime;
+        float mouseY = _axis.y * _sensitivity * Time.deltaTime;
 
         _yRotation += mouseX;
         _xRotation -= mouseY;
-
         _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
-        transform.rotation = Quaternion.Euler(_xRotation, _yRotation, 0);
+
+        transform.rotation = Quaternion.Euler(_xRotation, _yRotation, 0f);
+        _orientation.rotation = Quaternion.Euler(0, _yRotation, 0);
     }
 }
