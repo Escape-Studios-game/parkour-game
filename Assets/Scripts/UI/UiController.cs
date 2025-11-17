@@ -23,7 +23,7 @@ public class UiController : MonoBehaviour
     public void HideUi() => _canvas.enabled = false;
 
     /// <summary>
-    /// Changes the text from
+    /// Changes the text from a TextField
     /// </summary>
     /// <param name="gameObjectName"></param>
     /// <param name="toSet"></param>
