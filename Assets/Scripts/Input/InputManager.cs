@@ -1,16 +1,12 @@
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
-{
+public class InputManager : MonoBehaviour {
     public static InputManager Instance { get; private set; }
     private PlayerController _playerController;
 
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        { Destroy(gameObject); }
-        else
-        { Instance = this; }
+    private void Awake() {
+        if (Instance != null && Instance != this) { Destroy(gameObject); }
+        else { Instance = this; }
 
         _playerController = new();
     }

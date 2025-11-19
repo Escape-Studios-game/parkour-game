@@ -2,8 +2,7 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerMovement : MonoBehaviour
-{
+public class PlayerMovement : MonoBehaviour {
     private readonly float _maxForwardSpeed = 5f;
     private readonly float _maxMovementSpeed = 4f;
 
@@ -33,13 +32,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate() => Move();
 
-    private void Update()
-    {
+    private void Update() {
         Move();
         ApplyGravity();
 
-        if (_inputManager.JumpedThisFrame() && _isGrounded)
-        { Jump(); }
+        if (_inputManager.JumpedThisFrame() && _isGrounded) { Jump(); }
     }
 
     /// <summary>
@@ -48,27 +45,22 @@ public class PlayerMovement : MonoBehaviour
     /// <returns>The player's current speed in units per second.</returns>
     public float GetCurrentSpeed() => _currentSpeed;
 
-    private void CheckGrounded()
-    {
+    private void CheckGrounded() {
         // TODO check when the player is touching the ground (Because characterController sucks)
     }
 
-    private void ApplyGravity()
-    {
-        if (!_isGrounded)
-        {
+    private void ApplyGravity() {
+        if (!_isGrounded) {
             // TODO Apply gravity to the character
         }
     }
 
-    private void Jump()
-    {
+    private void Jump() {
         // TODO implement logic to make the player jump
         Debug.Log("Jumping");
     }
 
-    private void Move()
-    {
+    private void Move() {
         // TODO Implement movement related with camera and make it move smoothly, make it still moving even when stopped until speed reaches 0
         // Get the player inputs into a vector
         var axis = _inputManager.GetPlayerMovement();
@@ -79,13 +71,11 @@ public class PlayerMovement : MonoBehaviour
         var forwardDirection = Camera.main.transform.forward;
     }
 
-    private void IncreaseSpeed()
-    {
+    private void IncreaseSpeed() {
 
     }
 
-    private void DecreaseSpeed()
-    {
+    private void DecreaseSpeed() {
 
     }
 }

@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class MoveCamera : MonoBehaviour
-{
+public class MoveCamera : MonoBehaviour {
 
     [SerializeField, Tooltip("Add the player camera position")]
     private Transform _cameraPosition;

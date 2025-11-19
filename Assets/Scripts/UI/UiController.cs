@@ -6,8 +6,7 @@ using UnityEngine.UI;
 /// Default class for the creation
 /// </summary>
 [RequireComponent(typeof(Canvas))]
-public class UiController : MonoBehaviour
-{
+public class UiController : MonoBehaviour {
     private Canvas _canvas;
 
     private void Awake() => _canvas = GetComponent<Canvas>();
@@ -27,20 +26,16 @@ public class UiController : MonoBehaviour
     /// </summary>
     /// <param name="gameObjectName"></param>
     /// <param name="toSet"></param>
-    public void SetText(string gameObjectName, string toSet)
-    {
+    public void SetText(string gameObjectName, string toSet) {
         var child = transform.Find(gameObjectName);
 
-        if (child == null)
-        {
+        if (child == null) {
             GameObjectNotFound(gameObjectName);
             return;
         }
 
-        if (child.TryGetComponent<TextMeshProUGUI>(out var tmpText))
-        { tmpText.text = toSet; }
-        else
-        { Debug.LogWarning($"GameObject '{gameObjectName}' has no TextMeshProUGUI component."); }
+        if (child.TryGetComponent<TextMeshProUGUI>(out var tmpText)) { tmpText.text = toSet; }
+        else { Debug.LogWarning($"GameObject '{gameObjectName}' has no TextMeshProUGUI component."); }
     }
 
     /// <summary>
@@ -48,14 +43,11 @@ public class UiController : MonoBehaviour
     /// </summary>
     /// <param name="gameObjectName"></param>
     /// <param name="toSet"></param>
-    public void SetImageSprite(string gameObjectName, Sprite toSet)
-    {
-        if (transform.Find(gameObjectName).TryGetComponent<Image>(out var img))
-        {
+    public void SetImageSprite(string gameObjectName, Sprite toSet) {
+        if (transform.Find(gameObjectName).TryGetComponent<Image>(out var img)) {
             img.sprite = toSet;
         }
-        else
-        { GameObjectNotFound(gameObjectName); }
+        else { GameObjectNotFound(gameObjectName); }
     }
 
     /// <summary>
@@ -63,12 +55,9 @@ public class UiController : MonoBehaviour
     /// </summary>
     /// <param name="gameObjectName"></param>
     /// <param name="value"></param>
-    public void SetSliderValue(string gameObjectName, float value)
-    {
-        if (transform.Find(gameObjectName).TryGetComponent<Slider>(out var slider))
-        { slider.value = value; }
-        else
-        { GameObjectNotFound(gameObjectName); }
+    public void SetSliderValue(string gameObjectName, float value) {
+        if (transform.Find(gameObjectName).TryGetComponent<Slider>(out var slider)) { slider.value = value; }
+        else { GameObjectNotFound(gameObjectName); }
     }
 
     private void GameObjectNotFound(string gameObjectName) => Debug.LogWarning($"No GameObject found with name '{gameObjectName}'. Is it a child of this GameObject?");

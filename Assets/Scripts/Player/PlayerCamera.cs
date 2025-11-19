@@ -1,7 +1,6 @@
 using System.Linq;
 using UnityEngine;
-public class PlayerCamera : MonoBehaviour
-{
+public class PlayerCamera : MonoBehaviour {
     private InputManager _inputManager;
 
     [SerializeField, Tooltip("The speed the camera will move")]
@@ -13,8 +12,7 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField, Tooltip("Add here the orientation object")]
     private Transform _orientation;
 
-    private void Start()
-    {
+    private void Start() {
         _inputManager = InputManager.Instance;
         tag = "MainCamera";
         ChangeCursorState(CursorLockMode.Locked);
@@ -29,8 +27,7 @@ public class PlayerCamera : MonoBehaviour
     public float GetSensivity() => _sensitivity;
     public void SetSensivity(float toSet) => _sensitivity = toSet;
 
-    private void MoveCamera()
-    {
+    private void MoveCamera() {
         _axis = _inputManager.GetMouseDelta();
 
         float mouseX = _axis.x * _sensitivity * Time.deltaTime;
